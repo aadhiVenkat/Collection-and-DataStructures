@@ -8,9 +8,10 @@ public class Dynamic {
 		list.addLast(20);
 		list.addLast(30);
 		list.addLast(40);
-		list.remove(1);
-		//list.removeLast();
-		list.addLast(40);		
+		list.add(2, 50);
+		list.printList();
+			
+		
 	}
 
 }

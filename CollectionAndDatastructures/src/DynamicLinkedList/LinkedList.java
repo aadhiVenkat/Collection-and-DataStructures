@@ -89,7 +89,43 @@ public class LinkedList {
 		Last=previous;
 		Last.next=null;		
 	}
-	
+	public void add(int position,int value) {
+		if(size()==position)
+			addLast(value);
+		else if(0<position && position<size()) {
+			Node node=new Node(value);
+			Node current=First;
+			int count=0;
+			while(count!=position) {
+				current=current.next;
+				count++;
+			}
+			Node previous=getPrevious(current);
+			previous.next=node;
+			node.next=current;				
+		}
+		else
+			throw new IndexOutOfBoundsException();
+	}
+	public void printList() {
+		Node current=First;
+		if(current==null)
+			return;
+		else {
+			while(current!=null) {
+				System.out.print(current.value);
+				if(current.next!=null)
+					System.out.print("->");
+				current=current.next;
+			}
+				
+		}
+			
+	}
+
+	public void clear() {
+		First=Last=null;
+	}
 	private boolean isEmpty() {
 		return First==null;
 	}
@@ -101,7 +137,7 @@ public class LinkedList {
 		}
 		return null;
 	}
-	private int size(){
+	public int size(){
 		Node current=First;
 		int count=0;
 		while(current!=null) {
